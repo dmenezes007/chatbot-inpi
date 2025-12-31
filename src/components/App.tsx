@@ -64,6 +64,8 @@ const App: React.FC = () => {
   };
 
   const findNextFieldId = (choiceId?: string): string | null => {
+    if (!formData) return null;
+    
     const currentRef = currentIndex === -1 
       ? formData.welcome_screens[0].ref 
       : formData.fields.find(f => f.id === currentFieldId)?.ref;
@@ -91,6 +93,8 @@ const App: React.FC = () => {
   };
 
   const handleNext = (choiceId?: string) => {
+    if (!formData) return;
+    
     setDirection('next');
     const nextId = findNextFieldId(choiceId);
     
@@ -112,13 +116,45 @@ const App: React.FC = () => {
   };
 
   const handleBack = () => {
-    if (history.length === 0) return;
+    if (!formData || history.length === 0) return;
+    
     setDirection('prev');
     const lastId = history[history.length - 1];
     setHistory(prev => prev.slice(0, -1));
     setCurrentFieldId(lastId);
     setCurrentIndex(formData.fields.findIndex(f => f.id === lastId));
   };
+
+  // Tela de Loading
+  if (isLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen w-full bg-white">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500 mb-4"></div>
+        <p className="text-gray-600 text-lg">Carregando chatbot...</p>
+      </div>
+    );
+  }
+
+  // Tela de Erro
+  if (loadError || !formData) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen w-full bg-white p-6">
+        <div className="text-center space-y-4 max-w-md">
+          <div className="text-6xl mb-4">⚠️</div>
+          <h1 className="text-2xl font-semibold text-gray-800">Erro ao carregar</h1>
+          <p className="text-gray-600">
+            {loadError || "Não foi possível carregar os dados do formulário."}
+          </p>
+          <button 
+            onClick={() => window.location.reload()}
+            className="bg-blue-600 text-white px-6 py-3 rounded text-lg font-medium hover:bg-blue-700 transition-colors mt-4"
+          >
+            Tentar novamente
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   const currentField = formData.fields.find(f => f.id === currentFieldId);
   const welcomeScreen = formData.welcome_screens[0];
