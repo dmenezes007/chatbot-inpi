@@ -1,15 +1,38 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { TypeformData, Field, WelcomeScreen, ThankYouScreen } from '../types';
-import { formData } from '../data/formData';
+import { loadFormData } from '../data/formDataLoader';
 import { ChevronDown, ChevronUp, Star, ExternalLink, ArrowRight } from 'lucide-react';
 
 const App: React.FC = () => {
+  const [formData, setFormData] = useState<TypeformData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [history, setHistory] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(-1); // -1 is Welcome Screen
-  const [currentFieldId, setCurrentFieldId] = useState<string>(formData.welcome_screens[0].id);
+  const [currentFieldId, setCurrentFieldId] = useState<string>('');
   const [isFinished, setIsFinished] = useState(false);
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
+
+  // Carrega os dados do formulário ao montar o componente
+  useEffect(() => {
+    async function fetchFormData() {
+      try {
+        setIsLoading(true);
+        const data = await loadFormData();
+        setFormData(data);
+        setCurrentFieldId(data.welcome_screens[0]?.id || '');
+        setLoadError(null);
+      } catch (error) {
+        console.error('❌ Erro ao carregar formData:', error);
+        setLoadError('Erro ao carregar o formulário. Por favor, recarregue a página.');
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    
+    fetchFormData();
+  }, []);
 
   // Parse links and basic markdown in text
   const renderText = (text: string) => {
