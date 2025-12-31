@@ -1,0 +1,430 @@
+{
+  "meta": {
+    "versao": "2.0",
+    "data_criacao": "2025-12-31",
+    "descricao": "Estrutura melhorada do formulário do Chatbot INPI com fluxos completos",
+    "autor": "GitHub Copilot",
+    "status": "PROPOSTA - Implementação Pendente"
+  },
+  "melhorias_aplicadas": [
+    "Todos os fluxos do menu principal implementados",
+    "Conteúdo detalhado para todos os ativos",
+    "Navegação universal em todas as telas",
+    "FAQ integrado",
+    "Correção de IDs duplicados",
+    "Informações sobre sistemas do INPI",
+    "Guias passo a passo completos"
+  ],
+  "welcome_screens": [
+    {
+      "id": "WS001",
+      "ref": "welcome-main",
+      "title": "Olá! 👋\n\nEu me chamo **Felinpi**,\no Chatbot do INPI.\n\nEstou aqui para ajudar você com informações sobre Propriedade Industrial!\n\nPosso ajudar?",
+      "properties": {
+        "show_button": true,
+        "button_text": "Sim, vamos lá!"
+      },
+      "attachment": {
+        "href": "https://images.typeform.com/images/sAwNURdu4rNw",
+        "type": "image"
+      }
+    }
+  ],
+  "menu_principal": {
+    "id": "MP001",
+    "ref": "menu-principal",
+    "title": "Escolha uma opção abaixo:",
+    "type": "multiple_choice",
+    "properties": {
+      "choices": [
+        {
+          "id": "MP001-C01",
+          "ref": "conhecer-inpi",
+          "label": "🎓 Conhecer os serviços do INPI",
+          "next": "conhecer-servicos"
+        },
+        {
+          "id": "MP001-C02",
+          "ref": "iniciar-pedido",
+          "label": "🚀 Iniciar um pedido/registro",
+          "next": "escolher-ativo"
+        },
+        {
+          "id": "MP001-C03",
+          "ref": "acompanhar-pedido",
+          "label": "📊 Acompanhar pedido existente",
+          "next": "acompanhar-menu"
+        },
+        {
+          "id": "MP001-C04",
+          "ref": "resolver-problema",
+          "label": "🔧 Resolver problema em registro",
+          "next": "problema-tipo"
+        },
+        {
+          "id": "MP001-C05",
+          "ref": "sistemas-inpi",
+          "label": "💻 Entender os sistemas do INPI",
+          "next": "sistemas-lista"
+        },
+        {
+          "id": "MP001-C06",
+          "ref": "alerta-fraude",
+          "label": "⚠️ Alerta de cobrança/fraude",
+          "next": "fraude-info"
+        },
+        {
+          "id": "MP001-C07",
+          "ref": "atendimento",
+          "label": "📞 Falar com atendimento",
+          "next": "atendimento-opcoes"
+        }
+      ]
+    }
+  },
+  "fluxo_conhecer_servicos": {
+    "tela_inicial": {
+      "id": "CS001",
+      "ref": "conhecer-servicos",
+      "title": "Sobre Propriedade Industrial no INPI",
+      "content": "O INPI é responsável por proteger ativos de Propriedade Industrial no Brasil.\n\nEsses ativos representam criações intelectuais que podem gerar valor para seu negócio.\n\nO que você gostaria de saber?",
+      "choices": [
+        {
+          "id": "CS001-C01",
+          "label": "O que é Propriedade Industrial?",
+          "next": "cs-o-que-e-pi"
+        },
+        {
+          "id": "CS001-C02",
+          "label": "Quais ativos posso proteger?",
+          "next": "cs-ativos-lista"
+        },
+        {
+          "id": "CS001-C03",
+          "label": "Como funciona o processo de registro?",
+          "next": "cs-processo-geral"
+        },
+        {
+          "id": "CS001-C04",
+          "label": "Prazos e custos",
+          "next": "cs-prazos-custos"
+        },
+        {
+          "id": "CS001-C05",
+          "label": "Preciso de advogado/procurador?",
+          "next": "cs-procurador-info"
+        },
+        {
+          "id": "CS001-C06",
+          "label": "◀ Voltar ao menu principal",
+          "next": "menu-principal"
+        }
+      ]
+    },
+    "o_que_e_pi": {
+      "id": "CS002",
+      "content": "**Propriedade Industrial** protege criações intelectuais voltadas à atividade empresarial.\n\nInclui:\n• Marcas (identidade de produtos/serviços)\n• Patentes (invenções técnicas)\n• Desenhos Industriais (design de produtos)\n• E outros ativos\n\n**Por que proteger?**\n✓ Exclusividade de uso\n✓ Impedir cópias\n✓ Agregar valor ao negócio\n✓ Possibilidade de licenciar\n\n**Diferença de Direito Autoral:**\nDireito Autoral protege obras artísticas/literárias (livros, músicas, etc.) e é automático.\n\nPropriedade Industrial protege ativos empresariais e REQUER registro no INPI.",
+      "choices": [
+        {"label": "Entendi, quero ver os ativos", "next": "cs-ativos-lista"},
+        {"label": "Como funciona o processo?", "next": "cs-processo-geral"},
+        {"label": "◀ Voltar", "next": "conhecer-servicos"}
+      ]
+    },
+    "ativos_lista": {
+      "id": "CS003",
+      "title": "Ativos que você pode proteger no INPI:",
+      "content": "Clique em cada um para saber mais:",
+      "choices": [
+        {"id": "CS003-C01", "label": "🏷️ Marca", "next": "info-marca-completa"},
+        {"id": "CS003-C02", "label": "🔬 Patente", "next": "info-patente-completa"},
+        {"id": "CS003-C03", "label": "🎨 Desenho Industrial", "next": "info-desenho-completo"},
+        {"id": "CS003-C04", "label": "💻 Programa de Computador", "next": "info-software-completo"},
+        {"id": "CS003-C05", "label": "🌍 Indicação Geográfica", "next": "info-ig-completa"},
+        {"id": "CS003-C06", "label": "🔌 Topografia de Circuitos", "next": "info-topo-completa"},
+        {"id": "CS003-C07", "label": "📄 Contrato de Tecnologia", "next": "info-contrato-completo"},
+        {"id": "CS003-C08", "label": "◀ Voltar", "next": "conhecer-servicos"}
+      ]
+    },
+    "info_marca_completa": {
+      "id": "MARCA001",
+      "title": "🏷️ MARCA - Informações Completas",
+      "sections": [
+        {
+          "titulo": "O que é?",
+          "conteudo": "Sinal distintivo que identifica produtos ou serviços de uma empresa. Pode ser palavra, logo, símbolo, desenho ou combinação."
+        },
+        {
+          "titulo": "Tipos",
+          "conteudo": "• **Nominativa:** Apenas palavras (ex: \"Coca-Cola\")\n• **Figurativa:** Apenas imagem/logo\n• **Mista:** Palavra + imagem\n• **Tridimensional:** Forma do produto"
+        },
+        {
+          "titulo": "Passo a Passo",
+          "conteudo": "1. Busca de anterioridade (30min)\n2. Classificação NCL (15min)\n3. Emitir GRU (5min)\n4. Protocolar em e-Marcas (30min)\n5. Acompanhar na RPI (semanal)\n\n[Ver guia detalhado]"
+        },
+        {
+          "titulo": "Custos",
+          "conteudo": "👤 Pessoa Física: R$ 142\n🏢 MEI/Cooperativa: R$ 142\n🏭 Empresa: R$ 355\n\n(Valor do pedido inicial)"
+        },
+        {
+          "titulo": "Prazo",
+          "conteudo": "⏱️ Média: 12 a 24 meses\n⏰ Validade: 10 anos (renovável)"
+        },
+        {
+          "titulo": "Links Úteis",
+          "conteudo": "[Buscar Marcas](https://busca.inpi.gov.br/pePI/jsp/marcas/Pesquisa_num_processo.jsp)\n[Sistema e-Marcas](https://www.gov.br/inpi/pt-br/servicos/marcas/sistema-e-marcas)\n[Manual de Marcas](https://www.gov.br/inpi/pt-br/servicos/marcas/manuais)"
+        }
+      ],
+      "choices": [
+        {"label": "Quero iniciar pedido de marca", "next": "marca-passo-a-passo"},
+        {"label": "Ver FAQ de Marcas", "next": "marca-faq"},
+        {"label": "◀ Voltar à lista de ativos", "next": "cs-ativos-lista"}
+      ]
+    },
+    "procurador_info": {
+      "id": "CS010",
+      "title": "Preciso de Advogado/Procurador?",
+      "content": "**Para brasileiros:** ❌ NÃO é obrigatório\n\nVocê pode fazer o processo sozinho através dos sistemas online do INPI.\n\n**Para estrangeiros:** ✅ SIM, é obrigatório\n\nEmpresas ou pessoas domiciliadas FORA do Brasil devem ter procurador habilitado no INPI.\n\n**Posso contratar mesmo não sendo obrigatório?**\nSim! Muitas pessoas contratam especialistas em PI para:\n• Aumentar chances de aprovação\n• Evitar erros no processo\n• Economizar tempo\n• Estratégia de proteção\n\n**⚠️ ATENÇÃO:**\nO INPI NÃO indica, patrocina ou exige procuradores específicos. Desconfie de ofertas não solicitadas!",
+      "choices": [
+        {"label": "Entendi, quero fazer sozinho", "next": "menu-principal"},
+        {"label": "Como encontrar procurador?", "next": "procurador-encontrar"},
+        {"label": "◀ Voltar", "next": "conhecer-servicos"}
+      ]
+    }
+  },
+  "fluxo_iniciar_pedido": {
+    "escolher_ativo": {
+      "id": "IP001",
+      "title": "Qual ativo você quer registrar?",
+      "content": "Escolha o tipo de registro que você precisa:",
+      "choices": [
+        {"id": "IP001-C01", "label": "🏷️ Marca", "next": "marca-passo-a-passo"},
+        {"id": "IP001-C02", "label": "🔬 Patente (Invenção/MU)", "next": "patente-tipo"},
+        {"id": "IP001-C03", "label": "🎨 Desenho Industrial", "next": "desenho-passo-a-passo"},
+        {"id": "IP001-C04", "label": "💻 Programa de Computador", "next": "software-passo-a-passo"},
+        {"id": "IP001-C05", "label": "🌍 Indicação Geográfica", "next": "ig-info"},
+        {"id": "IP001-C06", "label": "🔌 Topografia de Circuitos", "next": "topo-info"},
+        {"id": "IP001-C07", "label": "📄 Contrato de Tecnologia", "next": "contrato-info"},
+        {"id": "IP001-C08", "label": "❓ Não sei qual preciso", "next": "ajuda-escolher-ativo"},
+        {"id": "IP001-C09", "label": "◀ Voltar", "next": "menu-principal"}
+      ]
+    },
+    "marca_passo_a_passo": {
+      "passos": [
+        {
+          "numero": 1,
+          "titulo": "Busca de Anterioridade",
+          "tempo": "30 minutos",
+          "conteudo": "Verifique se já existe marca igual ou semelhante.\n\n**Como fazer:**\n1. Acesse [Busca de Marcas](https://busca.inpi.gov.br/pePI/jsp/marcas/Pesquisa_num_processo.jsp)\n2. Digite o nome que você quer registrar\n3. Busque também nomes parecidos\n4. Verifique na classe NCL correta\n\n**Dica:** Busque variações fonéticas (ex: \"Kasa\" e \"Casa\")",
+          "obrigatorio": true,
+          "next": "marca-passo-2"
+        },
+        {
+          "numero": 2,
+          "titulo": "Classificação (NCL)",
+          "tempo": "15 minutos",
+          "conteudo": "Identifique a classe dos seus produtos/serviços.\n\n**Exemplos:**\nClasse 25: Roupas\nClasse 35: Serviços de comércio\nClasse 43: Restaurantes\n\n[Consultar Classificação Completa](https://www.gov.br/inpi/pt-br/servicos/marcas/classificacao-marcas)\n\n**Importante:** Pode registrar em múltiplas classes (paga por cada uma).",
+          "obrigatorio": true,
+          "next": "marca-passo-3"
+        },
+        {
+          "numero": 3,
+          "titulo": "Emitir GRU",
+          "tempo": "5 minutos",
+          "conteudo": "Gere a Guia de Recolhimento da União.\n\n**Valores:**\n👤 Pessoa Física: R$ 142,00\n🏢 MEI/Cooperativa: R$ 142,00\n🏭 Empresa: R$ 355,00\n\n[Gerar GRU](https://gru.inpi.gov.br/pag/)\n\n**Atenção:**\n• Pague em até 5 dias úteis\n• Use código 400 (pedido de registro)\n• Guarde o comprovante",
+          "obrigatorio": true,
+          "next": "marca-passo-4"
+        },
+        {
+          "numero": 4,
+          "titulo": "Protocolar Pedido",
+          "tempo": "30 minutos",
+          "conteudo": "Preencha o formulário no e-Marcas.\n\n**Você vai precisar:**\n✓ Login Gov.br (nível prata ou ouro)\n✓ Cópia da GRU paga\n✓ Imagem da marca (se figurativa/mista)\n✓ Procuração (se tiver representante)\n\n[Acessar e-Marcas](https://www.gov.br/inpi/pt-br/servicos/marcas/sistema-e-marcas)\n\n**Importante:** Confira todos os dados antes de enviar!",
+          "obrigatorio": true,
+          "next": "marca-passo-5"
+        },
+        {
+          "numero": 5,
+          "titulo": "Acompanhamento",
+          "tempo": "Semanal por 12-24 meses",
+          "conteudo": "Monitore seu processo na RPI.\n\n**Como acompanhar:**\n• RPI é publicada toda terça-feira\n• Configure notificações por e-mail\n• Procure pelo número do seu processo\n• Fique atento a prazos!\n\n[Acessar RPI](https://revistas.inpi.gov.br/rpi/)\n\n**Etapas típicas:**\n1. Exame formal (1 mês)\n2. Publicação para oposição (60 dias)\n3. Exame de mérito (variável)\n4. Concessão 🎉\n\n**Prazo total:** 12 a 24 meses",
+          "obrigatorio": true,
+          "next": "marca-finalizado"
+        }
+      ],
+      "ao_final": {
+        "mensagem": "Parabéns! Você agora sabe como registrar uma marca. 🎉\n\nLembre-se:\n• Acompanhe semanalmente a RPI\n• Responda exigências dentro do prazo\n• Após concessão, renove a cada 10 anos\n\nAlguma dúvida?",
+        "choices": [
+          {"label": "Ver FAQ de Marcas", "next": "marca-faq"},
+          {"label": "Quero registrar outro ativo", "next": "escolher-ativo"},
+          {"label": "🏠 Menu Principal", "next": "menu-principal"},
+          {"label": "Avaliar atendimento", "next": "avaliacao"}
+        ]
+      }
+    }
+  },
+  "fluxo_acompanhar": {
+    "menu": {
+      "id": "AC001",
+      "title": "Como posso ajudar com seu processo?",
+      "choices": [
+        {"label": "📊 Consultar andamento", "next": "consultar-andamento-info"},
+        {"label": "📝 Responder exigência", "next": "responder-exigencia-info"},
+        {"label": "💰 Pagar anuidade/retribuição", "next": "pagar-anuidade-info"},
+        {"label": "📜 Obter certificado", "next": "obter-certificado-info"},
+        {"label": "📰 Entender publicação RPI", "next": "entender-rpi"},
+        {"label": "◀ Voltar", "next": "menu-principal"}
+      ]
+    },
+    "consultar_andamento": {
+      "id": "AC002",
+      "content": "**Como consultar seu processo:**\n\n**1. Pela RPI (Revista da Propriedade Industrial)**\n• Publicada toda terça-feira\n• [Acessar RPI](https://revistas.inpi.gov.br/rpi/)\n• Busque pelo número do processo\n\n**2. Pelos sistemas online:**\n• [Busca de Marcas](https://busca.inpi.gov.br/pePI/jsp/marcas/Pesquisa_num_processo.jsp)\n• [Busca de Patentes](https://busca.inpi.gov.br/pePI/jsp/patentes/PatenteSearchBasico.jsp)\n• [Busca de Desenhos](https://gru.inpi.gov.br/pePI/jsp/desenhos/DesenhoSearchBasico.jsp)\n\n**3. Configure notificações:**\n• No sistema onde protocolou\n• Receba alertas por e-mail\n\n**Principais status:**\n• Exame formal\n• Aguardando exame\n• Exigência formulada\n• Deferido\n• Indeferido\n• Arquivado",
+      "choices": [
+        {"label": "Como responder exigência?", "next": "responder-exigencia-info"},
+        {"label": "Meu processo foi indeferido", "next": "processo-indeferido"},
+        {"label": "◀ Voltar", "next": "acompanhar-menu"}
+      ]
+    }
+  },
+  "fluxo_sistemas": {
+    "lista": {
+      "id": "SIS001",
+      "title": "Sistemas do INPI",
+      "content": "Selecione o sistema para mais informações:",
+      "choices": [
+        {"label": "e-Marcas", "next": "sistema-emarcas"},
+        {"label": "e-Patentes", "next": "sistema-epatentes"},
+        {"label": "e-Desenhos", "next": "sistema-edesenhos"},
+        {"label": "e-Software", "next": "sistema-esoftware"},
+        {"label": "e-Contratos", "next": "sistema-econtratos"},
+        {"label": "RPI (Revista)", "next": "sistema-rpi"},
+        {"label": "◀ Voltar", "next": "menu-principal"}
+      ]
+    },
+    "sistema_emarcas": {
+      "id": "SIS002",
+      "content": "**e-Marcas**\n\n**Para que serve:**\nProtocolar e acompanhar pedidos de marca\n\n**Acesso:**\nLogin Gov.br (nível prata ou ouro)\n[Acessar e-Marcas](https://www.gov.br/inpi/pt-br/servicos/marcas/sistema-e-marcas)\n\n**Funcionalidades:**\n✓ Protocolar novo pedido\n✓ Acompanhar processos\n✓ Responder exigências\n✓ Fazer petições diversas\n✓ Consultar GRUs\n\n**Dicas:**\n• Tenha certificado digital OU conta Gov.br nível prata/ouro\n• Prepare todos documentos antes de começar\n• Salve rascunhos durante o preenchimento\n• Confira tudo antes de protocolar",
+      "choices": [
+        {"label": "Como protocolar pedido?", "next": "marca-passo-a-passo"},
+        {"label": "Ver outros sistemas", "next": "sistemas-lista"},
+        {"label": "◀ Voltar", "next": "menu-principal"}
+      ]
+    }
+  },
+  "fluxo_fraude": {
+    "info_principal": {
+      "id": "FR001",
+      "title": "⚠️ ALERTA DE FRAUDE",
+      "content": "**O INPI NÃO:**\n❌ Envia boletos pelos Correios\n❌ Liga cobrando pagamentos\n❌ Envia e-mails pedindo dados bancários\n❌ Exige procurador para brasileiros\n❌ Patrocina ou habilita agentes\n\n**Golpes Comuns:**\n\n🚫 **Boleto Falso**\nEmpresas privadas enviam cobranças se passando pelo INPI\n\n🚫 **Oferta de Serviços**\n\"Registro obrigatório de marca\" - MENTIRA!\n\n🚫 **Procurador Obrigatório**\nFalso! Só para estrangeiros\n\n🚫 **Renovação Urgente**\nE-mails alarmistas com prazos falsos\n\n**Como se proteger:**\n✅ Gere suas GRUs no [site oficial](https://gru.inpi.gov.br/pag/)\n✅ Verifique remetente de e-mails (@inpi.gov.br)\n✅ Consulte processos nos sistemas oficiais\n✅ Em dúvida, contate o [Fale Conosco](http://faleconosco.inpi.gov.br/)\n\n[Mais informações](https://www.gov.br/inpi/pt-br/central-de-conteudo/alerta-contra-fraudes)",
+      "choices": [
+        {"label": "Recebi um boleto suspeito", "next": "fraude-boleto"},
+        {"label": "Recebi e-mail pedindo pagamento", "next": "fraude-email"},
+        {"label": "Como denunciar?", "next": "fraude-denunciar"},
+        {"label": "◀ Voltar", "next": "menu-principal"}
+      ]
+    },
+    "fraude_boleto": {
+      "id": "FR002",
+      "content": "**Recebeu um boleto suspeito?**\n\n**Verifique:**\n1. ✓ Você gerou essa GRU no site do INPI?\n2. ✓ O número do processo está correto?\n3. ✓ O valor confere com a tabela do INPI?\n4. ✓ O favorecido é \"INPI - INST NAC PROPR INDUST\"?\n\n**Se qualquer resposta for NÃO:**\n🚨 Provavelmente é GOLPE!\n\n**O que fazer:**\n• NÃO pague\n• NÃO responda\n• NÃO forneça dados\n• Gere sua própria GRU no [site oficial](https://gru.inpi.gov.br/pag/)\n• Denuncie (veja próxima tela)\n\n**Lembre-se:**\nTodas as GRUs são geradas por VOCÊ no site do INPI. O INPI nunca envia boletos!",
+      "choices": [
+        {"label": "Como denunciar?", "next": "fraude-denunciar"},
+        {"label": "Gerar GRU correta", "next": "gru-info"},
+        {"label": "◀ Voltar", "next": "fraude-info-principal"}
+      ]
+    }
+  },
+  "avaliacao": {
+    "pergunta_inicial": {
+      "id": "AV001",
+      "title": "As informações foram úteis?",
+      "type": "multiple_choice",
+      "choices": [
+        {"id": "AV001-C01", "label": "😊 Sim, muito úteis!", "next": "avaliacao-positiva"},
+        {"id": "AV001-C02", "label": "😐 Mais ou menos", "next": "avaliacao-neutra"},
+        {"id": "AV001-C03", "label": "😞 Não, não ajudou", "next": "avaliacao-negativa"}
+      ]
+    },
+    "positiva": {
+      "id": "AV002",
+      "title": "Que ótimo! Fico muito feliz! 🎉",
+      "content": "Dê uma nota para esta experiência:",
+      "type": "rating",
+      "properties": {
+        "shape": "star",
+        "steps": 5
+      },
+      "next": "agradecimento-final"
+    },
+    "negativa": {
+      "id": "AV003",
+      "title": "Que pena! 😔",
+      "content": "Sinto muito não ter ajudado.\n\nVocê pode:\n• [Contatar o Fale Conosco](http://faleconosco.inpi.gov.br/)\n• [Agendar atendimento telepresencial](https://www.gov.br/inpi/pt-br/plataforma-integrada-de-atendimento)\n\nDê uma nota para melhorarmos:",
+      "type": "rating",
+      "properties": {
+        "shape": "star",
+        "steps": 5
+      },
+      "next": "agradecimento-final"
+    }
+  },
+  "thankyou_screen": {
+    "id": "TY001",
+    "ref": "agradecimento-final",
+    "title": "Muito obrigado! 🙏\n\nFoi um prazer ajudar você.\n\nAté breve! 👋",
+    "properties": {
+      "show_button": true,
+      "button_text": "Reiniciar",
+      "button_action": "restart"
+    },
+    "additional_content": {
+      "links": [
+        {"label": "Site do INPI", "url": "https://www.gov.br/inpi/"},
+        {"label": "Fale Conosco", "url": "http://faleconosco.inpi.gov.br/"}
+      ]
+    }
+  },
+  "navegacao_universal": {
+    "descricao": "Botões presentes em TODAS as telas",
+    "botoes": [
+      {
+        "id": "nav-voltar",
+        "label": "◀ Voltar",
+        "action": "go_previous",
+        "posicao": "inferior_esquerda"
+      },
+      {
+        "id": "nav-menu",
+        "label": "🏠 Menu",
+        "action": "go_main_menu",
+        "posicao": "inferior_centro"
+      },
+      {
+        "id": "nav-sair",
+        "label": "❌ Sair",
+        "action": "finish",
+        "posicao": "inferior_direita"
+      }
+    ]
+  },
+  "analytics": {
+    "metricas_rastrear": [
+      "fluxo_mais_usado",
+      "tempo_medio_sessao",
+      "taxa_conclusao",
+      "taxa_abandono",
+      "pontos_de_saida",
+      "satisfacao_media",
+      "palavras_buscadas",
+      "links_mais_clicados"
+    ]
+  },
+  "proximos_passos_dev": [
+    "Implementar todos os fluxos no formData.ts",
+    "Criar componentes para navegação universal",
+    "Adicionar sistema de busca",
+    "Implementar FAQ dinâmico",
+    "Adicionar breadcrumb de navegação",
+    "Criar sistema de feedback por tela",
+    "Implementar analytics",
+    "Testes de usabilidade"
+  ]
+}

@@ -155,6 +155,9 @@ chatbot-inpi/
 │   └── main.tsx          # Ponto de entrada da aplicação
 ├── .env.example          # Exemplo de variáveis de ambiente
 ├── .gitignore            # Arquivos ignorados pelo Git
+├── ANALISE_FORMULARIO.md # Análise completa do formulário
+├── estrutura_form_v2.json # Estrutura melhorada proposta
+├── RESUMO_REVISAO.md     # Resumo da revisão realizada
 ├── index.html            # HTML principal
 ├── package.json          # Dependências e scripts
 ├── tsconfig.json         # Configuração TypeScript
@@ -164,7 +167,47 @@ chatbot-inpi/
 
 ---
 
-## 🔧 Configuração
+## � Documentação
+
+Este projeto inclui documentação completa:
+
+- [README.md](README.md) - Documentação principal (você está aqui)
+- [CONTRIBUTING.md](CONTRIBUTING.md) - Guia de contribuição
+- [CHANGELOG.md](CHANGELOG.md) - Histórico de versões
+- [ANALISE_FORMULARIO.md](ANALISE_FORMULARIO.md) - **Análise detalhada do formulário** 📊
+- [RESUMO_REVISAO.md](RESUMO_REVISAO.md) - **Resumo executivo da revisão** 📋
+- [estrutura_form_v2.json](estrutura_form_v2.json) - **Estrutura melhorada proposta** 🔄
+- [GITHUB_PUBLISH.md](GITHUB_PUBLISH.md) - Guia de publicação no GitHub
+- [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) - Resumo do projeto
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) - Código de conduta
+- [SECURITY.md](SECURITY.md) - Política de segurança
+
+### 🔍 Revisão do Formulário
+
+Uma **revisão completa** das perguntas, respostas e lógica foi realizada. Veja:
+
+- **[ANALISE_FORMULARIO.md](ANALISE_FORMULARIO.md)** - Análise técnica detalhada com 15.000+ palavras incluindo:
+  - Identificação de problemas críticos
+  - Conteúdo completo para todos os ativos (Marcas, Patentes, etc.)
+  - Guias passo a passo detalhados
+  - Informações sobre sistemas do INPI
+  - Tabelas de custos e prazos
+  - FAQ integrado
+
+- **[RESUMO_REVISAO.md](RESUMO_REVISAO.md)** - Resumo executivo com:
+  - Principais descobertas
+  - Comparação antes/depois
+  - Prioridades de implementação
+  - Métricas de sucesso esperadas
+
+- **[estrutura_form_v2.json](estrutura_form_v2.json)** - Nova estrutura JSON proposta com:
+  - Todos os fluxos implementados
+  - Navegação universal
+  - Conteúdo rico e detalhado
+
+---
+
+## �🔧 Configuração
 
 ### Personalizando o Conteúdo
 
